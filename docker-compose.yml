@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  fastapi-app:
+    build:
+      context: ./backend
+    image: fastapi-app
+    container_name: fastapi-app
+
+  react-app:
+    build:
+      context: ./react-app
+    image: react-app
+    container_name: react-app
+    depends_on:
+      - fastapi-app
+    ports:
+      - 80:80
