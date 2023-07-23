@@ -5,60 +5,45 @@ import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
+const listItems = [
+	{
+		to: '/',
+		primary: 'Trang Chủ',
+		icon: <DashboardIcon />,
+	},
+	{
+		to: '/bien-che',
+		primary: 'Biên Chế',
+		icon: <DashboardIcon />,
+	},
+	{
+		to: '/trang-bi',
+		primary: 'Trang Bị',
+		icon: <DashboardIcon />,
+	},
+	{
+		to: '/dieu-kien-huan-luyen',
+		primary: 'Điều Kiện Huấn Luyện',
+		icon: <DashboardIcon />,
+	},
+	{
+		to: '/noi-dung-bai-tap',
+		primary: 'Nội dung bài tập',
+		icon: <DashboardIcon />,
+	},
+];
+
 export const mainListItems = (
-  <React.Fragment>
-    <Link to='/'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Trang Chủ" />
-      </ListItemButton>
-    </Link>
-
-    <Link to='/bien-che'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Biên Chế" />
-      </ListItemButton>
-    </Link>
-
-    <Link to='/trang-bi'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Trang Bị" />
-      </ListItemButton>
-    </Link>
-
-    <Link to='/dieu-kien-huan-luyen'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Điều Kiện Huấn Luyện" />
-      </ListItemButton>
-    </Link>
-
-    <Link to='/noi-dung-bai-tap'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Thứ tự, Nội dung bài tập" />
-      </ListItemButton>
-    </Link>
-
-    <Link to='/profile'>
-      <ListItemButton>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-          <ListItemText primary="Profile" />
-      </ListItemButton>
-    </Link>
-  </React.Fragment>
+	<React.Fragment>
+		{listItems.map((listItem) => (
+			<Link to={listItem.to} style={{ textDecoration: 'none' }}>
+				<ListItemButton>
+					<ListItemIcon>
+						{listItem.icon}
+					</ListItemIcon>
+					<ListItemText primary={listItem.primary} />
+				</ListItemButton>
+			</Link>
+		))}
+	</React.Fragment>
 );

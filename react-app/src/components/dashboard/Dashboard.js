@@ -144,7 +144,6 @@ function DashboardContent() {
 						sx={{
 							position: 'fixed',
 							width: '100%',
-							height: '100vh',
 							backgroundImage: 'url("/images/background1.svg")',
 							backgroundRepeat: 'no-repeat',
 							backgroundAttachment: 'fixed',
