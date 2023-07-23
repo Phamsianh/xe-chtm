@@ -48,6 +48,7 @@ const Drawer = styled(MuiDrawer, {
 		position: 'relative',
 		whiteSpace: 'nowrap',
 		width: drawerWidth,
+		backgroundColor: '#29502c',
 		transition: theme.transitions.create('width', {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
@@ -83,6 +84,7 @@ function DashboardContent() {
 					<Toolbar
 						sx={{
 							pr: '24px', // keep right padding when drawer closed
+							backgroundColor:'#0b591b',
 						}}
 					>
 						<IconButton
@@ -111,7 +113,9 @@ function DashboardContent() {
 						<ProfilePopup />
 					</Toolbar>
 				</AppBar>
-				<Drawer variant="permanent" open={open}>
+				<Drawer variant="permanent" open={open} sx={{
+							backgroundColor:'#29502c',
+				}}>
 					<Toolbar
 						sx={{
 							display: 'flex',
@@ -121,7 +125,7 @@ function DashboardContent() {
 						}}
 					>
 						<IconButton onClick={toggleDrawer}>
-							<ChevronLeftIcon />
+							<ChevronLeftIcon style={{color:'white'}}/>
 						</IconButton>
 					</Toolbar>
 					<Divider />
@@ -144,11 +148,13 @@ function DashboardContent() {
 						sx={{
 							position: 'fixed',
 							width: '100%',
+							maxWidth:'none !important',
 							height: '100vh',
 							backgroundImage: 'url("/images/background1.svg")',
 							backgroundRepeat: 'no-repeat',
 							backgroundAttachment: 'fixed',
-							backgroundSize: 'cover',
+							backgroundSize: 'inherit',
+							backgroundPosition: 'center',
 							opacity: 0.1,
 						}}
 					>
