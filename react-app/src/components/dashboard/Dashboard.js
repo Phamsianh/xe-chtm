@@ -84,7 +84,7 @@ function DashboardContent() {
 					<Toolbar
 						sx={{
 							pr: '24px', // keep right padding when drawer closed
-							backgroundColor:'#0b591b',
+							backgroundColor: '#0b591b',
 						}}
 					>
 						<IconButton
@@ -110,12 +110,16 @@ function DashboardContent() {
 							<br />
 							KỊP THỜI - CHÍNH XÁC - BÍ MẬT – AN TOÀN
 						</Typography>
-						<ProfilePopup />
+						{/* <ProfilePopup /> */}
 					</Toolbar>
 				</AppBar>
-				<Drawer variant="permanent" open={open} sx={{
-							backgroundColor:'#29502c',
-				}}>
+				<Drawer
+					variant="permanent"
+					open={open}
+					sx={{
+						backgroundColor: '#29502c',
+					}}
+				>
 					<Toolbar
 						sx={{
 							display: 'flex',
@@ -125,7 +129,7 @@ function DashboardContent() {
 						}}
 					>
 						<IconButton onClick={toggleDrawer}>
-							<ChevronLeftIcon style={{color:'white'}}/>
+							<ChevronLeftIcon style={{ color: 'white' }} />
 						</IconButton>
 					</Toolbar>
 					<Divider />
@@ -134,22 +138,20 @@ function DashboardContent() {
 				<Box
 					component="main"
 					sx={{
-						backgroundColor: (theme) =>
-							theme.palette.mode === 'light'
-								? theme.palette.grey[100]
-								: theme.palette.grey[900],
 						flexGrow: 1,
 						height: '100vh',
 						overflow: 'auto',
+						position: 'relative'
 					}}
 				>
 					<Toolbar />
 					<Container
 						sx={{
 							position: 'fixed',
-							width: '100%',
-							maxWidth:'none !important',
+							top: 0,
+							maxWidth: 'none !important',
 							height: '100vh',
+							zIndex: '-1000',
 							backgroundImage: 'url("/images/background1.svg")',
 							backgroundRepeat: 'no-repeat',
 							backgroundAttachment: 'fixed',
@@ -157,25 +159,21 @@ function DashboardContent() {
 							backgroundPosition: 'center',
 							opacity: 0.1,
 						}}
-					>
-					</Container>
-						<Routes>
-							<Route path="/" element={<TrangChu />} />
-							<Route path="/bien-che" element={<BienChe />} />
-							<Route path="/trang-bi" element={<TrangBi />} />
-							<Route
-								path="/dieu-kien-huan-luyen"
-								element={<DieuKienHuanLuyen />}
-							/>
-							<Route
-								path="/noi-dung-bai-tap"
-								element={<NoiDungBaiTap />}
-							/>
-							<Route
-								path="/profile"
-								element={<div>Profile</div>}
-							/>
-						</Routes>
+					></Container>
+					<Routes>
+						<Route path="/" element={<TrangChu />} />
+						<Route path="/bien-che" element={<BienChe />} />
+						<Route path="/trang-bi" element={<TrangBi />} />
+						<Route
+							path="/dieu-kien-huan-luyen"
+							element={<DieuKienHuanLuyen />}
+						/>
+						<Route
+							path="/noi-dung-bai-tap"
+							element={<NoiDungBaiTap />}
+						/>
+						<Route path="/profile" element={<div>Profile</div>} />
+					</Routes>
 				</Box>
 			</Box>
 		</ThemeProvider>

@@ -36,11 +36,11 @@ const listItems = [
   primary: 'Nội dung bài tập', 
   icon: <LibraryBooksIcon />, 
  }, 
- { 
-  to: '/Profile', 
-  primary: 'Profile', 
-  icon: <AccountCircleIcon />, 
- }, 
+//  { 
+//   to: '/Profile', 
+//   primary: 'Profile', 
+//   icon: <AccountCircleIcon />, 
+//  }, 
 ]; 
  
 export const mainListItems = ( 

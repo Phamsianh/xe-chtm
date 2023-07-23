@@ -10,7 +10,7 @@ export default function TrangChu() {
 				justifyContent: 'center',
 			}}
 		>
-			<Typography>
+			<Typography variant={'h6'}>
 				PHẦN MỀM HUẤN LUYỆN BÀI TẬP TỔNG HỢP ĐỐI VỚI TỔ ĐÀI XE CTHM
 			</Typography>
 		</Container>
