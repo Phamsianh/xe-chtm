@@ -8,7 +8,7 @@ export async function getToken(loginData) {
         'content-type': 'application/x-www-form-urlencoded',
 		body: loginData,
 	}).catch((e) => console.error('GET FETCH ERROR', e));
-	console.log(resp);
+	
 	// handle the response status
 	if (resp.status !== 200) {
 		let error_detail = await resp.json();

@@ -2,15 +2,24 @@ import os
 
 ############################## DATABASE CONFIG ##############################
 # For development, use the following config for database:
-database = 'postgresql'
-host = 'localhost'
-port = '5432'
-user_name = 'postgres'
-password = '123456'
-database_name = 'xe-chtm'
+# database = 'postgresql'
+# host = 'localhost'
+# port = '5432'
+# user_name = 'postgres'
+# password = '123456'
+# database_name = 'xe-chtm'
+
+# For using with docker, use the following config for database:
+database = os.environ.get('DB')
+host = os.environ.get('DB_HOST')
+port = os.environ.get('DB_PORT')
+user_name = os.environ.get('DB_USERNAME')
+password = os.environ.get('DB_PASSWORD')
+database_name = os.environ.get('DB_NAME')
 
 ############################## FASTAPI CONFIG ##############################
 # For development comment out the api_root_path.
+api_root_path = os.environ.get('API_ROOT_PATH')
 title = "Phần mềm huấn luyện bài tập tổng hợp đối với xe CHTM"
 description = """Phần mềm huấn luyện bài tập tổng hợp đối với xe CHTM"""
 servers = [

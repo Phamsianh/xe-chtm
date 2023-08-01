@@ -5,7 +5,7 @@ from fastapi import Depends, APIRouter, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from jose import jwt
 
-from ORM.Model import Account
+from ORM.Model import User
 from dependencies.db import get_session
 from app_config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 
@@ -31,11 +31,11 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), session = Depends(ge
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-def authenticate_user(session, username: str, password: str) -> Union[bool, Account]:
-    user = session.query(Account).filter(Account.username == username).first()
+def authenticate_user(session, username: str, password: str) -> Union[bool, User]:
+    user = session.query(User).filter(User.username == username).first()
     if not user:
         return False
-    if not password == user.password_:
+    if not password == user.password:
         return False
     return user
 

@@ -3,7 +3,6 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Link } from 'react-router-dom';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import GavelIcon from '@mui/icons-material/Gavel';
 import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
@@ -36,17 +35,12 @@ const listItems = [
   primary: 'Nội dung bài tập', 
   icon: <LibraryBooksIcon />, 
  }, 
-//  { 
-//   to: '/Profile', 
-//   primary: 'Profile', 
-//   icon: <AccountCircleIcon />, 
-//  }, 
 ]; 
  
 export const mainListItems = ( 
  <React.Fragment> 
-  {listItems.map((listItem) => ( 
-   <Link to={listItem.to} style={{textDecoration: 'none', color:'white'}}> 
+  {listItems.map((listItem, index) => ( 
+   <Link key={index} to={listItem.to} style={{textDecoration: 'none', color:'white'}}> 
     <ListItemButton> 
      <ListItemIcon style={{color:'white'}}> 
       {listItem.icon} 

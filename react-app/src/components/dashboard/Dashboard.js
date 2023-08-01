@@ -110,7 +110,7 @@ function DashboardContent() {
 							<br />
 							KỊP THỜI - CHÍNH XÁC - BÍ MẬT – AN TOÀN
 						</Typography>
-						{/* <ProfilePopup /> */}
+						<ProfilePopup />
 					</Toolbar>
 				</AppBar>
 				<Drawer

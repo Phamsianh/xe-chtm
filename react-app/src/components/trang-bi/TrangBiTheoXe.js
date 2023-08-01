@@ -2,11 +2,13 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
+import { getEquipment } from '../../api/equipments';
 
 const columns = [
-	{ field: 'id', headerName: 'STT', width: 90 },
+	{ field: 'id', headerName: 'ID', width: 90 },
+	{ field: 'order', headerName: 'STT', width: 90 },
 	{
-		field: 'equipment_name',
+		field: 'name',
 		headerName: 'TÊN TRANG BỊ',
 		flex: 1,
 		editable: true,
@@ -26,24 +28,18 @@ const columns = [
 	},
 ];
 
-const rows = [
-	{ id: 1, equipment_name: 'Trang Bị 1', unit: 'cái', quantity: 35 },
-	{ id: 2, equipment_name: 'Trang Bị 2', unit: 'cái', quantity: 42 },
-	{ id: 3, equipment_name: 'Trang Bị 3', unit: 'cái', quantity: 45 },
-	{ id: 4, equipment_name: 'Trang Bị 4', unit: 'cái', quantity: 16 },
-	{ id: 5, equipment_name: 'Trang Bị 5', unit: 'cái', quantity: 10 },
-	{ id: 6, equipment_name: 'Trang Bị 6', unit: 'cái', quantity: 150 },
-	{ id: 7, equipment_name: 'Trang Bị 7', unit: 'cái', quantity: 44 },
-	{ id: 8, equipment_name: 'Trang Bị 8', unit: 'cái', quantity: 36 },
-	{ id: 9, equipment_name: 'Trang Bị 9', unit: 'cái', quantity: 65 },
-];
-
 export default function TrangBiTheoXe() {
+	const [trangbi, setTrangbi] = React.useState([])
+
+	React.useEffect(() => {
+		getEquipment().then(data => setTrangbi(data))
+	}, [])
+
 	return (
 		<Box sx={{ height: 400, width: '100%' }}>
 			<Paper>
 				<DataGrid
-					rows={rows}
+					rows={trangbi}
 					columns={columns}
 					initialState={{
 						pagination: {
@@ -51,6 +47,11 @@ export default function TrangBiTheoXe() {
 								pageSize: 5,
 							},
 						},
+						columns: {
+							columnVisibilityModel: {
+							  id: false,
+							},
+						  },
 					}}
 					pageSizeOptions={[5]}
 					disableRowSelectionOnClick

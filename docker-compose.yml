@@ -1,18 +1,44 @@
 version: "3.9"
 
 services:
-  fastapi-app:
+  xe-chtm-db:
+    image: postgres
+    container_name: xe-chtm-db
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      timeout: 25s
+      interval: 5s
+      retries: 5
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: XECHTM
+    volumes:
+      - ./backend/db_init/01-init.sh:/docker-entrypoint-initdb.d/01-init.sh
+
+  xe-chtm-backend:
     build:
       context: ./backend
-    image: fastapi-app
-    container_name: fastapi-app
+    image: xe-chtm-backend
+    container_name: xe-chtm-backend
+    environment:
+      - DB=postgresql
+      - DB_HOST=xe-chtm-db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=123456
+      - DB_NAME=XECHTM
+      - API_ROOT_PATH=/api
+    depends_on:
+      - xe-chtm-db
 
-  react-app:
+  xe-chtm-frontend:
     build:
       context: ./react-app
-    image: react-app
-    container_name: react-app
+    image: xe-chtm-frontend
+    container_name: xe-chtm-frontend
     depends_on:
-      - fastapi-app
+      - xe-chtm-backend
     ports:
       - 80:80

@@ -1,5 +1,5 @@
 // Development server
-export const domain = 'http://localhost:8000/'
+// export const domain = 'http://localhost:8000/'
 
 // Production
-// export const domain = '/api/'
+export const domain = '/api/'
