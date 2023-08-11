@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456
-      POSTGRES_DB: XECHTM
+      POSTGRES_DB: xechtm
     volumes:
       - ./backend/db_init/01-init.sh:/docker-entrypoint-initdb.d/01-init.sh
       - ./data:/var/lib/postgresql/data
@@ -29,7 +29,7 @@ services:
       - DB_PORT=5432
       - DB_USERNAME=postgres
       - DB_PASSWORD=123456
-      - DB_NAME=XECHTM
+      - DB_NAME=xechtm
       - API_ROOT_PATH=/api
     depends_on:
       - xe-chtm-db
