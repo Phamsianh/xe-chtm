@@ -1,14 +1,9 @@
-import {
-	Paper,
-	Stack,
-	Typography,
-	Divider,
-} from '@mui/material';
+import { Paper, Stack, Typography, Divider } from '@mui/material';
 import { domain } from '../../config';
 
 export default function AnhTrangBi({ membersData }) {
 	return (
-		<Paper elevation={3}>
+		<Paper elevation={3} sx={{ bgcolor: '#C8E4B2' }}>
 			<Stack
 				direction={'column'}
 				alignItems={'center'}

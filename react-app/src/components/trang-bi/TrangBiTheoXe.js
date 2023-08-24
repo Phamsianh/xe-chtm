@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
 import { getEquipment } from '../../api/equipments';
+import { Container } from '@mui/material';
 
 const columns = [
 	{ field: 'id', headerName: 'ID', width: 90 },
@@ -16,14 +17,14 @@ const columns = [
 	{
 		field: 'unit',
 		headerName: 'ĐƠN VỊ TÍNH',
-		flex: 1,
+		flex: 0.3,
 		editable: true,
 	},
 	{
 		field: 'quantity',
 		headerName: 'SỐ LƯỢNG TÍNH',
 		type: 'number',
-		flex: 1,
+		flex: 0.3,
 		editable: true,
 	},
 ];
@@ -36,15 +37,15 @@ export default function TrangBiTheoXe() {
 	}, [])
 
 	return (
-		<Box sx={{ height: 400, width: '100%' }}>
-			<Paper>
+		<Container sx={{ width: '900px'}}>
+			<Paper sx={{bgcolor: '#C8E4B2' }}>
 				<DataGrid
 					rows={trangbi}
 					columns={columns}
 					initialState={{
 						pagination: {
 							paginationModel: {
-								pageSize: 5,
+								pageSize: 25,
 							},
 						},
 						columns: {
@@ -53,10 +54,10 @@ export default function TrangBiTheoXe() {
 							},
 						  },
 					}}
-					pageSizeOptions={[5]}
+					pageSizeOptions={[5, 10, 25]}
 					disableRowSelectionOnClick
 				/>
 			</Paper>
-		</Box>
+		</Container>
 	);
 }

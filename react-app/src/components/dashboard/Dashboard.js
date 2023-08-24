@@ -19,9 +19,10 @@ import TrangBi from '../trang-bi/TrangBi';
 import DieuKienHuanLuyen from '../dieu-kien-huan-luyen/DieuKienHuanLuyen';
 import NoiDungBaiTap from '../noi-dung-bai-tap/NoiDungBaiTap';
 import TrangChu from '../trang-chu/TrangChu';
-import { Container } from '@mui/material';
+import { ImageList, ImageListItem } from '@mui/material';
 
 const drawerWidth = 240;
+const toolbarHeight = 120;
 
 const AppBar = styled(MuiAppBar, {
 	shouldForwardProp: (prop) => prop !== 'open',
@@ -84,7 +85,12 @@ function DashboardContent() {
 					<Toolbar
 						sx={{
 							pr: '24px', // keep right padding when drawer closed
-							backgroundColor: '#0b591b',
+							// backgroundColor: '#0b591b',
+							background: 'rgb(255,0,0)',
+							background:
+								'radial-gradient(circle, rgba(255,0,0,0.5) 0%, rgba(240,255,49,0.5) 50%, rgba(11,89,27,1) 100%)',
+							height: toolbarHeight,
+							disableGutters: false
 						}}
 					>
 						<IconButton
@@ -99,9 +105,10 @@ function DashboardContent() {
 						>
 							<MenuIcon />
 						</IconButton>
+						<img src="/images/bctt192.png" alt="logo" width={100} style={{borderRadius: '2px'}}/>
 						<Typography
 							component="h1"
-							variant="h6"
+							variant="h4"
 							color="inherit"
 							noWrap
 							sx={{ flexGrow: 1 }}
@@ -111,6 +118,17 @@ function DashboardContent() {
 							KỊP THỜI - CHÍNH XÁC - BÍ MẬT – AN TOÀN
 						</Typography>
 						<ProfilePopup />
+						<div class="background-navbar" style={{
+							position: 'absolute',
+							top: 0,
+							left:0,
+							width: '100%',
+							height: '100%',
+							backgroundImage: 'url(/images/background1.svg)',
+							backgroundPosition: '50% 50%',
+							opacity: 0.3,
+							zIndex: -1
+						}}></div>
 					</Toolbar>
 				</AppBar>
 				<Drawer
@@ -126,6 +144,7 @@ function DashboardContent() {
 							alignItems: 'center',
 							justifyContent: 'flex-end',
 							px: [1],
+							height: toolbarHeight,
 						}}
 					>
 						<IconButton onClick={toggleDrawer}>
@@ -141,25 +160,46 @@ function DashboardContent() {
 						flexGrow: 1,
 						height: '100vh',
 						overflow: 'auto',
-						position: 'relative'
+						position: 'relative',
 					}}
 				>
-					<Toolbar />
-					<Container
+					<div style={{height: toolbarHeight, zIndex: -1, width: '100%'}}></div>
+					<ImageList
 						sx={{
+							width: '100%',
+							height: '100vh',
+							overflow: 'hidden',
 							position: 'fixed',
 							top: 0,
-							maxWidth: 'none !important',
-							height: '100vh',
-							zIndex: '-1000',
-							backgroundImage: 'url("/images/background1.svg")',
-							backgroundRepeat: 'no-repeat',
-							backgroundAttachment: 'fixed',
-							backgroundSize: 'inherit',
-							backgroundPosition: 'center',
-							opacity: 0.1,
+							left: 0,
+							zIndex: -1,
+							opacity: 0.5,
 						}}
-					></Container>
+						cols={2}
+						rowHeight={'auto'}
+					>
+						{[
+							'/images/anh-trang-chu.jpg',
+							'/images/anh-trang-chu1.jpg',
+							'/images/anh-trang-chu2.jpg',
+							'/images/anh-trang-chu3.jpg',
+						].map((item) => (
+							<ImageListItem
+								key={item}
+								sx={{
+									height: '50vh !important',
+									overflow: 'hidden',
+								}}
+							>
+								<img
+									src={`${item}`}
+									srcSet={`${item}`}
+									alt={item}
+									loading="lazy"
+								/>
+							</ImageListItem>
+						))}
+					</ImageList>
 					<Routes>
 						<Route path="/" element={<TrangChu />} />
 						<Route path="/bien-che" element={<BienChe />} />

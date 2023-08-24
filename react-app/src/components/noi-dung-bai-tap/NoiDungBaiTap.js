@@ -30,7 +30,8 @@ export default function NoiDungBaiTap() {
 			sx={{
 				width: '100%',
 				bgcolor: 'background.paper',
-                justifyContent: 'center'
+                justifyContent: 'center',
+				height: '100vh'
 			}}
 		>
 			<Tabs

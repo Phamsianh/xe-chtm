@@ -1,4 +1,4 @@
-from sqlalchemy import (BigInteger, Column, Integer,
+from sqlalchemy import (BigInteger, Column, Integer, Float,
                         ForeignKey, String, Enum)
 from sqlalchemy.orm import relationship
 
@@ -54,7 +54,7 @@ class Member(Base):
     order = Column(Integer, nullable=False)
     img_url_1 = Column(String)
     img_url_2 = Column(String)
-    note = Column(String)
+    note = Column(String, default='')
 
     def __repr__(self):
         return f'''
@@ -76,7 +76,7 @@ class Equipment(Base):
     order = Column(Integer, nullable=False)
     name = Column(String, nullable=False)
     unit = Column(String, nullable=False)
-    quantity = Column(BigInteger)
+    quantity = Column(Float)
 
     def __repr__(self):
         return f'''

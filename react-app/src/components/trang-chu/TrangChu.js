@@ -10,8 +10,15 @@ export default function TrangChu() {
 				justifyContent: 'center',
 			}}
 		>
-			<Typography variant={'h6'}>
-				PHẦN MỀM HUẤN LUYỆN BÀI TẬP TỔNG HỢP ĐỐI VỚI TỔ ĐÀI XE CTHM
+			<Typography variant={'h3'} sx={{
+				position: 'fixed',
+				top: '50%',
+				transform: 'translateY(-50%)'
+			}}>
+				<strong>
+					PHẦN MỀM HUẤN LUYỆN BÀI TẬP TỔNG HỢP <br />
+					ĐỐI VỚI TỔ ĐÀI XE CTHM
+				</strong>
 			</Typography>
 		</Container>
 	);

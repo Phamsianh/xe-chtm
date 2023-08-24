@@ -32,7 +32,7 @@ export default function ProfilePopupAdmin() {
 	};
 
 	return (
-		<>
+		<div style={{zIndex: 100}}>
 			{currentUser && (
 				<Typography variant="body" fontSize={15}>
 					Chào đồng chí {currentUser?.first_name}{' '}
@@ -64,6 +64,6 @@ export default function ProfilePopupAdmin() {
 					</List>
 				</Paper>
 			</Popper>
-		</>
+		</div>
 	);
 }

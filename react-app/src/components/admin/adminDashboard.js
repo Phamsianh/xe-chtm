@@ -14,7 +14,6 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { mainListItems } from './listItems';
 import { Route, Routes } from 'react-router-dom';
 import TrangChu from '../trang-chu/TrangChu';
-import { Container } from '@mui/material';
 import SignIn from '../sign-in/SignIn';
 import BienCheAdmin from './adminBienche';
 import DieuKienHuanLuyenAdmin from './adminDieuKienHuanLuyen';
@@ -23,6 +22,8 @@ import UploadImage from './adminUploadImage';
 import UploadVideo from './adminUploadVideo';
 import NoiDungBaiTapAdmin from './adminNoiDungBaiTap';
 import ProfilePopupAdmin from './adminProfilePopup';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 const drawerWidth = 240;
 
@@ -102,6 +103,7 @@ function DashboardContent() {
 						>
 							<MenuIcon />
 						</IconButton>
+						<img src="/images/bctt192.png" alt="logo" width={50} />
 						<Typography
 							component="h1"
 							variant="h6"
@@ -144,25 +146,38 @@ function DashboardContent() {
 						flexGrow: 1,
 						height: '100vh',
 						overflow: 'auto',
-						position: 'relative'
+						position: 'relative',
 					}}
 				>
 					<Toolbar />
-					<Container
+					<ImageList
 						sx={{
-							position: 'fixed',
-							top: 0,
-							maxWidth: 'none !important',
+							width: '100%',
 							height: '100vh',
-							zIndex: '-1000',
-							backgroundImage: 'url("/images/background1.svg")',
-							backgroundRepeat: 'no-repeat',
-							backgroundAttachment: 'fixed',
-							backgroundSize: 'inherit',
-							backgroundPosition: 'center',
+							overflow: 'hidden',
+							position: 'absolute',
+							top: 0,
+							zIndex: -1,
 							opacity: 0.1,
+							textAlign: 'center',
 						}}
-					></Container>
+						cols={1}
+						rowHeight={'auto'}
+					>
+						<ImageListItem key={'background1.svg'}>
+							<img
+								src="/images/background1.svg"
+								srcSet="/images/background1.svg"
+								alt="/images/background1.svg"
+								loading="lazy"
+								style={{
+									position: 'absolute',
+									top: '50%',
+									transform: 'translateY(-50%)',
+								}}
+							/>
+						</ImageListItem>
+					</ImageList>
 					<Routes>
 						<Route path="/" element={<TrangChu />} />
 						<Route path="/login" element={<SignIn />} />
@@ -177,8 +192,14 @@ function DashboardContent() {
 							element={<NoiDungBaiTapAdmin />}
 						/>
 						<Route path="/profile" element={<div>Profile</div>} />
-						<Route path="/upload_images" element={<UploadImage />} />
-						<Route path="/upload_videos" element={<UploadVideo />} />
+						<Route
+							path="/upload_images"
+							element={<UploadImage />}
+						/>
+						<Route
+							path="/upload_videos"
+							element={<UploadVideo />}
+						/>
 					</Routes>
 				</Box>
 			</Box>

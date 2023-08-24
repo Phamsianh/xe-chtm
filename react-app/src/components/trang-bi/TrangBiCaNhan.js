@@ -18,8 +18,10 @@ export default function TrangBiCaNhan() {
 
 	React.useEffect(() => {
 		getMember().then((data) => {
-			setMembersData(data.sort((a, b) => a.order - b.order));
-		});
+			data = data.sort((a, b) => a.order - b.order)
+			setMembersData(data);
+			setAnhTrangBi(<AnhTrangBi membersData={data[selectedIndex]} />);
+	});
 	}, []);
 
 	const handleListItemClick = (event, index) => {
@@ -31,28 +33,35 @@ export default function TrangBiCaNhan() {
 		<Container>
 			<Grid container spacing={2}>
 				<Grid item xs={4}>
-					<Paper elevation={3} sx={{ p: 2 }}>
-						<List
-							sx={{
-								bgcolor: 'background.paper',
-							}}
-						>
+					<Paper
+						elevation={3}
+						sx={{ p: 2, bgcolor: '#C8E4B2', position: 'relative' }}
+					>
+						<List>
 							{membersData.map((member, index) => {
-								return <ListItemButton
-									selected={selectedIndex === index}
-									onClick={(event) =>
-										handleListItemClick(event, index)
-									}
-								>
-									<ListItemAvatar>
-										<Avatar>
-											<PersonIcon />
-										</Avatar>
-									</ListItemAvatar>
-									<ListItemText primary={member.name} />
-								</ListItemButton>;
+								return (
+									<ListItemButton
+										selected={selectedIndex === index}
+										onClick={(event) =>
+											handleListItemClick(event, index)
+										}
+									>
+										<ListItemAvatar>
+											<Avatar>
+												<PersonIcon />
+											</Avatar>
+										</ListItemAvatar>
+										<ListItemText primary={member.name} />
+									</ListItemButton>
+								);
 							})}
 						</List>
+					</Paper>
+					<Paper
+						elevation={3}
+						sx={{ mt:2, p: 2, bgcolor: '#C8E4B2', position: 'relative' }}
+					>
+							Trang bị cá nhân: {membersData[selectedIndex].note}
 					</Paper>
 				</Grid>
 				<Grid item xs={8}>

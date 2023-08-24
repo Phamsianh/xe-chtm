@@ -13,11 +13,11 @@ export default function TrangBi() {
 	};
 
 	return (
-		<Box sx={{ width: '100%' }}>
+		<Box sx={{ width: '100%'}}>
 			<Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
 				<Tabs value={value} onChange={handleChange} centered>
-					<Tab label="Trang Bị Theo Xe" />
-					<Tab label="Trang Bị Cá Nhân" />
+					<Tab label="Trang Bị Theo Xe" sx={{fontSize: '1.4em', fontWeight: 'bold'}}/>
+					<Tab label="Trang Bị Cá Nhân" sx={{fontSize: '1.4em', fontWeight: 'bold'}} />
 				</Tabs>
 			</Box>
 			<TabPanel value={value} index={0}>

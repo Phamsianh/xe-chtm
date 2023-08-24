@@ -25,7 +25,7 @@ export default function ProfilePopup() {
 			</IconButton>
 
 			<Popper open={open} anchorEl={anchorEl}>
-				<Paper elevation={5} sx={{ mt: 2, mr: 2, p: 1, minWidth: 200 }}>
+				<Paper elevation={5} sx={{ mt: '45px', mr: 2, p: 1, minWidth: 200 }}>
 					<List component="nav" aria-label="Sign-In">
 						<ListItemButton onClick={login}>
 							<ListItemText primary="Đăng nhập" />
